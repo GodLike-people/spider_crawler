@@ -1,0 +1,1 @@
+[{'url': {'secId': '0P0001HDB4', 'url': 'https://www.us-api.morningstar.com/sal/sal-service/fund/portfolio/holding/v2/0P0001HDB4/data', 'status': 2}, 'err': ReadTimeout(ReadTimeoutError("HTTPSConnectionPool(host='www.us-api.morningstar.com', port=443): Read timed out. (read timeout=3)")), 'date': datetime.datetime(2024, 5, 9, 13, 55, 31, 378230)}]
