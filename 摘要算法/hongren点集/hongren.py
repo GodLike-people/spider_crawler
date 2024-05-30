@@ -25,10 +25,10 @@ json_data = {
     'tenant': '1',
     'token': 'h622inzcXnQ1vzRaB58045Zk6GQ69UDP',
 }
-# param=json.dumps(json_data.get("param"))
-param=json_data.get("param")
+param=json.dumps(json_data.get("param"))
+# param=json_data.get("param")
 print(param)
-get_params=execjs.compile(open('hongren.js','r').read()).call("get_params",param)
+get_params=execjs.compile(open('hongren.js','r',encoding='utf-8').read()).call("get_params",param)
 json_data['timestamp']=get_params[0]
 json_data['sign']=get_params[1]
 print(json_data)
