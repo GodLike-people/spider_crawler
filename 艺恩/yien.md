@@ -50,8 +50,8 @@ decrypt(
 
 ```
 import subprocess
-ret = subprocess.Popen("du -sh",shell=True,stdout=subprocess.PIPE)
-print(ret.stdout.read())
+from functools import partial
+subprocess.Popen=partial(subprocess.Popen,encoding='utf-8')
 ```
 
 ![img_5.png](img_5.png)
