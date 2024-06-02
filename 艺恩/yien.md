@@ -48,6 +48,12 @@ decrypt(
 
 不想改源码，可以加上三行代码
 
+```
+import subprocess
+ret = subprocess.Popen("du -sh",shell=True,stdout=subprocess.PIPE)
+print(ret.stdout.read())
+```
+
 ![img_5.png](img_5.png)
 
 
