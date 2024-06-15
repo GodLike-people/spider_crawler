@@ -1,4 +1,5 @@
-﻿import requests
+﻿import execjs
+import requests
 
 
 headers = {
@@ -19,11 +20,19 @@ headers = {
     "sign": "9c6fb37fefc8fe4b5d368d98387e48f0",
     "timestamp": "1718320588000"
 }
+data='page=1&limit=20&pointname=%E5%A3%B6%E7%93%B6%E5%B1%B1%E5%9B%BD%E5%AE%B6%E7%BA%A7%E8%87%AA%E7%84%B6%E4%BF%9D%E6%8A%A4%E5%8C%BA%E7%AE%A1%E7%90%86%E5%B1%80'
+js_code=execjs.compile(open("观鸟网.js",encoding='utf-8').read())
+all_data=js_code.call("beforeSend",data)
+print(all_data)
+headers["requestId"]=all_data['requestId']
+headers["sign"]=all_data['sign']
+headers["timestamp"]=all_data['timestamp']
+print(headers)
 url = "https://api.birdreport.cn/front/record/activity/search"
-data = {
-    "BlS4WKnqaKWuG+m7JDMzUJ4oJKWS/vB0Qb4JUdROzKgNb2IRxlKBl+I+auRRRxPLM5RrdPe3slYjxiqM3GgWP46TxMKCt09Fbt4Cb1BN1IbRq2I2rOA8znNthxxwDitfJz7KjYLz3XiFsxUYX90XaemdPJlCmnWafubDgmLkRgdhYK7PcD74Ok/tHzaI5oxzEUdg04h0IUl7N9PgNN/pP94nMV8pOBQ9xUAVx6TQlPm1BAx0Nj5pe3i+d3xiX6waRZZku5kUdCsA9AjRjkZuhiV9a/wZ9nFEy0rdBrCPAzZxfGTgnc34NfAnpIqKYa8ZlTudTYkSJgPPpuHgrbsqpw": "="
-}
+data = all_data["data"]
 response = requests.post(url, headers=headers, params=data)
-
 print(response.text)
+parseData=js_code.call("parseData",response.json())
+print(parseData)
+
 
