@@ -15,8 +15,10 @@ headers = {
     "sec-ch-ua-platform": "\"Windows\""
 }
 url = "https://passport.iqiyi.com/apis/reglogin/login.action"
-js_code=execjs.compile(open("爱奇艺.js",encoding="utf-8").read())
-js_code.call("")
+js_code=execjs.compile(open("爱奇艺.js", encoding="utf-8").read())
+passwd="zac123456"
+passwd2=js_code.call("rsaEnc",passwd)
+print(passwd2)
 params = {
     "__NEW": "1",
     "agenttype": "1",
@@ -25,11 +27,11 @@ params = {
     "checkExist": "1",
     "device_id": "237d3307c43bddc26a23b15ad7eff508",
     "dfp": "",
-    "email": "18952597613",
+    "email": "18952597616",
     "fromSDK": "1",
     "lang": "",
     "nr": "3",
-    "passwd": "2a992b60c06a80cd266a725de5a7a1dabd2820e63b215715abef33ceb094683b3841161946b4967e330c3de1d6236e30cb8c06506c8519f6279c3be161817dfb",
+    "passwd": passwd2,
     "ptid": "01010021010000000000",
     "sdk_version": "1.0.0",
     "verifyPhone": "1",
