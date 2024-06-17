@@ -585,3 +585,7 @@ rsaEnc=function (e) {
 passwd=rsaEnc(passwd)
 
 console.log(passwd)
+
+// let r = Z.httpParamsStr(t);
+        e2="__NEW=1&agenttype=1&app_version=12.62.16353&area_code=86&checkExist=1&device_id=adqey67hz3pzk7qgw6sta7x7carf4q36&dfp=a1b67f18c4d4b440178367643889940ed19019b731e27928c9d8beab7c9c2a252e&email=18952597616&fromSDK=1&lang=&nr=3&passwd=2a992b60c06a80cd266a725de5a7a1dabd2820e63b215715abef33ceb094683b3841161946b4967e330c3de1d6236e30cb8c06506c8519f6279c3be161817dfb&ptid=01010021010000000000&sdk_version=1.0.0&verifyPhone=1"
+console.log(je.qdsfStr(e2));
