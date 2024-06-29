@@ -35,7 +35,7 @@ params = execjs.compile(open('雪球.js', encoding='utf-8').read()).call("get_co
 cookies['acw_sc__v2']=params
 print(cookies)
 
-response = session.get(url, headers=headers, cookies=cookies)
+response = requests.get(url, headers=headers, cookies=cookies)
 
 print(response.text)
 # print(response)

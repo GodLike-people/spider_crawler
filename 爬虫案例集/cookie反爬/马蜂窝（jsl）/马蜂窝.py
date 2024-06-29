@@ -1,4 +1,5 @@
-﻿import re
+﻿import json
+import re
 
 import execjs
 import requests
@@ -36,5 +37,14 @@ print(cookies)
 
 # 第二次 带着生成的cookie和请求返回的参数，再法一次请求
 res = requests.get(url, headers=headers,cookies=cookies)
-print(res.text)
+# print(res.text)
+arg1 = re.search(";go\((.*?)\)</script>", res.text).group(1)
+print(arg1)
+params = execjs.compile(open('马蜂窝.js', encoding='utf-8').read()).call("get_go",execjs.eval(arg1) )
+print(params)
+cookies["__jsl_clearance_s"]=params.split("_s=")[-1]
+print(cookies)
+# print(params)
 # 第三次根据第二次返回的js代码重新生成__jsl_clearance_s
+res2 = requests.get(url, headers=headers,cookies=cookies)
+print(res2.text)
